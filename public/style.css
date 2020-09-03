@@ -225,6 +225,8 @@ footer{
   margin: 0 auto;
   padding: 50px;
   color: white;
+  display: flex;
+  flex-direction: row;
 }
 
 .footer-container h4{
@@ -277,7 +279,7 @@ padding-left: 20px;
   margin-top: 160px;
 }
 
-@media (max-width:978px) and (min-width:1px) {
+/* @media (max-width:978px) and (min-width:1px) {
 
   .subscribe form {
     width: 80%;
@@ -296,7 +298,7 @@ padding-left: 20px;
   .footer-col2, .footer-col3 {
     display: none;
   }
-}
+} */
 html{
   scroll-behavior: smooth;
 }
@@ -688,7 +690,27 @@ h2{
   margin: 2px;
   padding: 2px;
 }
-
+.vmain{
+  display: flex; flex-direction: row;width: 100%;height:500px;justify-content: center;align-items: center;
+}
+@media (max-width: 600px) {
+  .vmain {
+    display: flex;
+    width: 100%;height:500px;justify-content: center;align-items: center;
+    flex-direction: column;
+  }
+  .footer-container{
+    flex-direction: column;
+  }
+  footer{
+    height: auto;
+  }
+  .social-media{
+  float: none;
+  text-align: center;
+    
+  }
+}
 .vbox{
   padding: 5px;
   width: 300px;
