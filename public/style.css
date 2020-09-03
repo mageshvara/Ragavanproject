@@ -225,8 +225,7 @@ footer{
   margin: 0 auto;
   padding: 50px;
   color: white;
-  display: flex;
-  flex-direction: row;
+
 }
 
 .footer-container h4{
@@ -700,6 +699,7 @@ h2{
     flex-direction: column;
   }
   .footer-container{
+    display: flex;
     flex-direction: column;
   }
   footer{
