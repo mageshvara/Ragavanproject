@@ -32,8 +32,8 @@
                         <li class="nav_item"><a style="text-decoration: none;" href="#home" class="nav_link active">Home</a></li>
                         <li class="nav_item"><a style="text-decoration: none;" href="#about" class="nav_link">About</a></li>
                         <li class="nav_item"><a style="text-decoration: none;" href="#service" class="nav_link">Services</a></li>
+                        <li class="nav_item"><a style="text-decoration: none;" href="#goals" class="nav_link">Goals</a></li>  
                         <li class="nav_item"><a style="text-decoration: none;" href="#achiv" class="nav_link">Achievments</a></li> 
-                        <li class="nav_item"><a style="text-decoration: none;" href="#getjobs" class="nav_link">GetJobs</a></li>  
                         <li class="nav_item"><a style="text-decoration: none;" href="#contact" class="nav_link">Contact</a></li>                   
                     </ul>
                 </div>
@@ -53,69 +53,76 @@
                     <img src="images/home2.gif" alt="">
                 </div>
                 <div class="home-info">
-                
-                    <form style="color: var(--first-color);" class="getjform text-center border border-light p-5" action="#!">
+                <% if(message!=''){%>
+                    <% if(message=='you have already applied'){%>
+                        <div style="margin-top: 30px;" id="alert" class="alert alert-danger">
+                            <strong><%=message%></strong><i onclick="removes()" style="float:right;" class='bx bx-x'></i>
+                        </div>
+                    <%}%>
+                    <%if(message=='Your data have been recived! Soon we will get you'){%>
+                <div id="alert" class="alert alert-success">
+                    <strong><%=message%></strong><i onclick="removes()" style="float:right;" class='bx bx-x'></i>
+                </div>
+                <%}%>
+                <%}%>
+                    <form style="color: var(--first-color);" class="getjform text-center border border-light p-5" method="POST" action="/joingroup">
 
                         <p class="h4 mb-4">Join Whatsapp Group</p>
-                        <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
-                        <input type="text" id="defaultContactFormEmail" class="form-control mb-4" placeholder="Qualification">
+                        <input type="text" id="defaultContactFormName" name="username" class="form-control mb-4" placeholder="Name">
+                        <input type="text" id="defaultContactFormEmail" name="qualification" class="form-control mb-4" placeholder="Qualification">
                         
-                        <input type="Number" id="defaultContactFormName" class="form-control mb-4" placeholder="WhatsApp Number">
+                        <input type="tel" maxlength="10" size="10" name="whatsapp_num" id="defaultContactFormName" class="form-control mb-4" placeholder="WhatsApp Number">
                 
-                        <select aria-placeholder="Choose District" class="browser-default custom-select mb-4">
+                        <select name="district" aria-placeholder="Choose District" class="browser-default custom-select mb-4">
                             <option value="1" >Select District</option>
-                            <option value="2">Ariyalur</option>
-                            <option value="3">Chengalpattu</option>
-                            <option value="4">Chennai</option>
-                             <option value="5">Chennai</option>
-                             <option value="6"> Coimbatore</option>
-                             <option value="7">Cuddalore</option>   
-                            <option value="8">Dharmapuri</option>
-                            <option value="9">Dindigul</option>
-                            <option value="10">Erode</option>
-                            <option value="11">Kallakurichi</option>
-                            <option value="13">Kanchipuram</option>
-                            <option value="14">Kanyakumari</option>
-                            <option value="15">Karur</option>
-                            <option value="16"> Krishnagiri</option>
-                            <option value="17"> Madurai</option>
-                            <option value="18"> Mayiladuthurai</option>
-                            <option value="19"> Nagapattinam</option>
-                            <option value="20"> Namakkal</option>
-                            <option value="21">Nilgiris</option>
-                            <option value="22">Perambalur</option>
-                                <option value="23">Pudukkottai</option>
-                            <option value="24">Ramanathapuram</option>
-                            <option value="25">Ranipet</option>
-                            <option value="26">Salem</option>
-                            <option value="27">Sivagangai</option>
-                            <option value="28">Tenkasi</option>
-                            <option value="29">Thanjavur</option>
-                            <option value="30">Theni</option>
-                            <option value="31">Thoothukudi</option>
-                            <option value="32">Tiruchirappalli</option>
-                            <option value="33"> Tirunelveli</option>
-                            <option value="34">Tiruppur</option>
-                            <option value="35">Tiruvallur</option>
-                            <option value="36">Tiruvannamalai</option>
-                            <option value="37">Tiruvarur</option>
-                            <option value="38">Vellore</option>
-                            <option value="39">Viluppuram</option>
-                            <option value="40">Virudhunagar</option>
+                            <option value="Ariyalur">Ariyalur</option>
+                            <option value="Chengalpattu">Chengalpattu</option>
+                            <option value="Chennai">Chennai</option>
+                             <option value="Coimbatore"> Coimbatore</option>
+                             <option value="Cuddalore">Cuddalore</option>   
+                            <option value="Dharmapuri">Dharmapuri</option>
+                            <option value="Dindigul">Dindigul</option>
+                            <option value="Erode">Erode</option>
+                            <option value="Kallakurichi">Kallakurichi</option>
+                            <option value="Kanchipuram">Kanchipuram</option>
+                            <option value="Kanyakumari">Kanyakumari</option>
+                            <option value="Karur">Karur</option>
+                            <option value="Krishnagiri"> Krishnagiri</option>
+                            <option value="Madurai"> Madurai</option>
+                            <option value="Mayiladuthurai"> Mayiladuthurai</option>
+                            <option value="Nagapattinam"> Nagapattinam</option>
+                            <option value=" Namakkal"> Namakkal</option>
+                            <option value="Nilgiris">Nilgiris</option>
+                            <option value="Perambalur">Perambalur</option>
+                                <option value="Pudukkottai">Pudukkottai</option>
+                                <option value="Puducherry UT">Puducherry UT</option>
+                            <option value="Ramanathapuram">Ramanathapuram</option>
+                            <option value="Ranipet">Ranipet</option>
+                            <option value="Salem">Salem</option>
+                            <option value="Sivagangai">Sivagangai</option>
+                            <option value="Tenkasi">Tenkasi</option>
+                            <option value="Thanjavur">Thanjavur</option>
+                            <option value="Theni">Theni</option>
+                            <option value="Thoothukudi">Thoothukudi</option>
+                            <option value="Tiruchirappalli">Tiruchirappalli</option>
+                            <option value="Tirunelveli"> Tirunelveli</option>
+                            <option value="Tiruppur">Tiruppur</option>
+                            <option value="Tiruvallur">Tiruvallur</option>
+                            <option value="Tiruvannamalai">Tiruvannamalai</option>
+                            <option value="Tiruvarur">Tiruvarur</option>
+                            <option value="Vellore">Vellore</option>
+                            <option value="Viluppuram">Viluppuram</option>
+                            <option value="Virudhunagar">Virudhunagar</option>
                            
                         </select>
-                        <div style="display: flex; flex-direction: row;">
-                        <div class="custom-control custom-radio" style="margin: 5px;">
-                            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-                            <label class="custom-control-label" for="defaultGroupExample1">Experienced</label>
-                          </div>
+                        <select name="gender" aria-placeholder="Choose District" class="browser-default custom-select mb-4">
+                            <option value="" >select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="others">Others</option>
+                        </select>
                     
-                          <div class="custom-control custom-radio"style="margin: 5px;">
-                            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" checked>
-                            <label class="custom-control-label" for="defaultGroupExample2">Fresher</label>
-                          </div>
-                        </div>
-                        <button style="background-color:var(--first-color);margin: 10px;" class="btn btn-info btn-block" type="submit">Send</button>
+                        <button style="background-color:var(--first-color);margin: 10px;" class="btn btn-info btn-block" type="submit">Submit</button>
                     
                     </form>
                 </div>
@@ -142,7 +149,9 @@
                         <a href="" class="aboutsocialicon"><i class='bx bxl-instagram-alt' ></i></a>
                         <a href="" class="aboutsocialicon"><i class='bx bxl-facebook-square' ></i></a>
                         <a href="" class="aboutsocialicon"><i class='bx bxl-youtube' ></i></a>
-
+                        <a href="" class="aboutsocialicon"><i class='bx bxl-telegram'></i></a>
+                        <a href="" class="aboutsocialicon"><i class='bx bxl-twitter' ></i></a>
+                   
 
                     </div>
 
@@ -169,7 +178,7 @@
             </div>
         </section>
         <hr  class="hr-1">
-        <section class="container service-offerings">
+        <section class="container service-offerings" id="goals">
             <h3 class="serviceb-subtitle">Vallalar Velai Vaaipu Sevai Iyakkam </h3>
             <div class="row">
               <div class="col-sm-4 service-category">
@@ -232,7 +241,7 @@
               </div>
           </section>
           <hr  class="hr-1">
-          <section class="getjobs section" id="getjobs">
+          <!-- <section class="getjobs section" id="getjobs">
             <h2 class="section-title">Get Jobs</h2>
 <div class="getjobcontainer bd-grid">
     <div class="aboutimg">
@@ -251,7 +260,7 @@
 
     </div>
 </div>
-          </section>
+          </section> -->
         <section class="achiv section" id="achiv">
             <h2 class="section-title">Achivements</h2>
         <div class="achiv-container bd-grid">
@@ -383,10 +392,10 @@
             <div class="footer-data">
                 <h2 class="footer-title">Explore</h2>
              <ul>
-                 <li><a href="#home" class="footer-link"></a>Home</li>
-                 <li><a href="#about" class="footer-link"></a>About</li>
+                 <li><a href="#home" class="footer-link">Home</a></li>
+                 <li><a href="#about" class="footer-link">About</a></li>
                  <li><a href="#services" class="footer-link">Services</a></li>
-                 <li><a href="#getjobs" class="footer-link">GetJobs</li>
+                 <li><a href="#goals" class="footer-link">Goals</a></li>
                  <li><a href="#achiv" class="footer-link">Achivements</a></li>
                  <li><a href="#contact" class="footer-link">Contact</a></li>
              </ul>
@@ -396,6 +405,9 @@
                 <a href="https://www.instagram.com/vvvsi_career_guidelines/"class="footer-social"><i class='bx bxl-instagram-alt' ></i></a>
                 <a href="https://www.facebook.com/veera.rahavan/" class="footer-social"><i class='bx bxl-facebook-square' ></i></a>
                 <a href="https://www.youtube.com/c/VVVSICAREERGUIDELINES" class="footer-social"><i class='bx bxl-youtube' ></i></a>
+                <a href="https://www.youtube.com/c/VVVSICAREERGUIDELINES" class="footer-social"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://www.youtube.com/c/VVVSICAREERGUIDELINES" class="footer-social"><i class='bx bxl-telegram' ></i></a>
+
          
             </div>
         </div>

@@ -75,3 +75,7 @@ sr.reveal('.contact-button',{delay:600})
 
 
  //sr.reveal('.service-category',{delay:200,interval:200})
+const removes=()=>{
+    console.log("hi");
+    document.getElementById("alert").remove();
+}
