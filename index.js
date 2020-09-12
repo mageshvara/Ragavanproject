@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({
 
   mongoose.connect("mongodb+srv://vvvsiuser:vvvsipass@cluster0.lsows.mongodb.net/vvvsi?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true} );
   const schema={
+    _id:String,
     userid:String,
     username:String,
     qualification:String,
@@ -36,8 +37,8 @@ app.use(bodyParser.urlencoded({
     gender:String,
     district:String,
     joinstatus:String,
-    dateofapply:Date,
-    dateofgiven:Date};
+    dateofapply:String,
+    dateofgiven:String};
     User=mongoose.model("User",schema);
 
 app.use(express.static('public'));
@@ -52,9 +53,11 @@ app.get('/home',(req,res)=>{
 app.post('/joingroup',(req,res)=>{
    // var sql = "INSERT INTO userdetail (userid,username,qualification,whatsapp_num,gender,district,joinstatus,dateofapply,dateofgiven) VALUES ?";  
     dataofapply1=new Date();
+    
     userid1=req.body.whatsapp_num+"#vvvsm";
   
     const newuser=new User({
+      _id:userid1,
       userid:userid1,
      username:req.body.username,
      qualification:req.body.qualification,
@@ -62,7 +65,7 @@ app.post('/joingroup',(req,res)=>{
      gender:req.body.gender,
      district:req.body.district,
       joinstatus:"no",
-      dateofapply:dataofapply1,
+      dateofapply:dataofapply1.toString(),
      dateofgiven:"0"  
     });
     User.findOne({userid:userid1},function(err,result){
