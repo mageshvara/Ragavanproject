@@ -1,16 +1,17 @@
 const express=require('express');
 const app=express();
 const bodyParser=require("body-parser");
-const ejs=require("ejs");
 
+
+const ejs=require("ejs");
+const imgid="1";
 const server=require('http').Server(app);
 const io=require("socket.io")(server);
 var mysql = require('mysql'); 
 const mongoose=require("mongoose");
 const { strict } = require('assert');
-app.use(bodyParser.urlencoded({
-    extended: true
-  }));
+app.use(bodyParser.json({limit: '10mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 
   //mysql
   // var con = mysql.createConnection({
@@ -41,14 +42,24 @@ app.use(bodyParser.urlencoded({
     dateofgiven:String};
     User=mongoose.model("User",schema);
 
+    const urls={
+      url:String,
+      iid:String,
+    };
+
+    Imageurl=mongoose.model("Imageurl",urls);
+   
 app.use(express.static('public'));
 app.set('view engine','ejs');
 
 app.get('/',(req,res)=>{
     res.redirect("/home");
 });
+
 app.get('/home',(req,res)=>{
-    res.render('home',{message:''});
+  Imageurl.findOne({iid:imgid},function(err,result){
+    res.render('home',{message:'',hurl:result.url});
+  });
 });
 app.post('/joingroup',(req,res)=>{
    // var sql = "INSERT INTO userdetail (userid,username,qualification,whatsapp_num,gender,district,joinstatus,dateofapply,dateofgiven) VALUES ?";  
