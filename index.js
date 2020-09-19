@@ -66,7 +66,13 @@ app.post('/joingroup',(req,res)=>{
     dataofapply1=new Date();
     
     userid1=req.body.whatsapp_num+"#vvvsm";
-  
+  if(req.body.username==""||req.body.qualification==""||req.body.whatsapp_num==""||req.body.gender==""||req.body.district=="")
+  {
+    Imageurl.findOne({iid:imgid},function(err,result){
+      res.render('home',{message:'Please Fill All The Fields',hurl:result.url});
+  });
+  }
+  else{
     const newuser=new User({
       _id:userid1,
       userid:userid1,
@@ -88,16 +94,23 @@ app.post('/joingroup',(req,res)=>{
     //console.log(result.userid,userid1);
     if(result){
       if(result.userid==userid1){
-        res.render("home",{message:"you have already applied"});
+        Imageurl.findOne({iid:imgid},function(err,result){
+          res.render('home',{message:'you have already applied',hurl:result.url});
+      });
+      
       }
     }
       
     else{
       newuser.save();
-      res.render("home",{message:"Your data have been recived! Soon we will get you"});
+      Imageurl.findOne({iid:imgid},function(err,result){
+        res.render('home',{message:'Your data have been recived! Soon we will get you',hurl:result.url});
+    });
+   
     }
     
   }
+
       
     })
   // var sql2="SELECT * FROM userdetail WHERE userid = ?"
@@ -116,5 +129,6 @@ app.post('/joingroup',(req,res)=>{
   //   }
     
   // });
+  }
 })
  server.listen(process.env.PORT||3030);

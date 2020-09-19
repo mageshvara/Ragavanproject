@@ -26,7 +26,8 @@
     <header class="header1">
         <nav class="nav bd-grid">
             <div style="display: flex;flex-direction: row;">
-                <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt="">   <p  class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
+                <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt=""><div style="display: flex;flex-direction: column;"> <p class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
+              <h11 style="font-size: 15px;">(Employment Social Service NGO,India)</h11></div>
             </div>
                 <div class="nav_menu" id="nav-menu">
                     <ul class="nav_list">
@@ -76,6 +77,11 @@
                     <strong><%=message%></strong><i onclick="removes()" style="float:right;" class='bx bx-x'></i>
                 </div>
                 <%}%>
+                <%if(message=='Please Fill All The Fields'){%>
+                    <div id="alert" class="alert alert-danger">
+                        <strong><%=message%></strong><i onclick="removes()" style="float:right;" class='bx bx-x'></i>
+                    </div>
+                    <%}%>
                 <%}%>
                     <form style="color: var(--first-color);" class="getjform text-center border border-light p-5" method="POST" action="/joingroup">
 
@@ -442,7 +448,7 @@
         <div class="footer-container bd-grid">
             <div class="footer-data">
                 <h2 class="footer-title">VVVSI</h2>
-                <p class="footer-text">Vallalar Velaivaipu Sevai Iyakkam</p>
+                <p class="footer-text">Vallalar Velai Vaaipu Sevai Iyakkam </p>
             </div>
             <div class="footer-data">
                 <h2 class="footer-title">Explore</h2>
