@@ -878,7 +878,7 @@ h2 {
     transition: all 0.5s ease-in-out;
 }
 .service-category:hover .services-list {
-    height: 200px;
+    height: 230px;
     margin-bottom: 0;
 }
 .service-category:hover i.fa {
