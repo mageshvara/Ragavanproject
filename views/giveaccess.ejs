@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" 
+    type="image/png" 
+    href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <title>VVVSI</title>
+    <style>
+     .hid{
+       visibility: hidden;
+     }
+     .democlass {
+  color: red;
+  border:solid red;
+  border-radius: 5px;
+  margin-right: 5px;
+  padding: 5px;}
+  input[type="radio"] {
+	 opacity: 0;
+	 width: 100%;
+	 height: 42px;
+	 background-color: blue;
+	 position: relative;
+	 z-index: 1;
+}
+ group {
+   margin-top: 10px;
+	 width: 200px;
+	 display: flex;
+}
+group p{
+  height: 42px;
+	 width: 100%;
+	 position: relative;
+}
+ .input-container {
+	 height: 42px;
+	 width: 100%;
+	 line-height: 42px;
+	 text-align: center;
+	 position: relative;
+}
+ .input-container:first-child label {
+	 border-radius: 5px 0 0 5px;
+}
+ .input-container:last-child label {
+	 border-radius: 0 5px 5px 0;
+	 border-right: 2px solid #ccc;
+}
+ label {
+	 width: 100%;
+	 height: 100%;
+	 position: absolute;
+	 border: 2px solid #ccc;
+	 border-right: inherit;
+	 top: 0;
+	 left: 0;
+	 font-family: arial;
+	 color: #737373;
+}
+ input:checked + label {
+	 background-color: #5ab8ab;
+	 top: 0;
+	 left: 0;
+	 border: 2px solid #3f9188 !important;
+	 z-index: 2;
+	 color: white;
+}
+ 
+ 
+ 
+ @media screen and (max-width: 600px) {
+   table {
+     border: 0;
+   }
+ 
+   table caption {
+     font-size: 1.3em;
+   }
+   
+   table thead {
+     border: none;
+     clip: rect(0 0 0 0);
+     height: 1px;
+     margin: -1px;
+     overflow: hidden;
+     padding: 0;
+     position: absolute;
+     width: 1px;
+   }
+   
+   table tr {
+     border-bottom: 3px solid #ddd;
+     display: block;
+     margin-bottom: .625em;
+   }
+   
+   table td {
+     border-bottom: 1px solid #ddd;
+     display: block;
+     font-size: .8em;
+     text-align: right;
+   }
+   
+   table td::before {
+     /*
+     * aria-label has no advantage, it won't be read inside a table
+     content: attr(aria-label);
+     */
+     content: attr(data-label);
+     float: left;
+     font-weight: bold;
+     text-transform: uppercase;
+   }
+   
+   table td:last-child {
+     border-bottom: 0;
+   }
+ }
+   </style>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <div style="display: flex;flex-direction: row;">
+            <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt="">   <p  class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
+        </div>
+                    
+        <form class="form-inline" style="padding: 10px;"  method="POST" action="/giveaccess">
+            
+            <select  style="padding: 10px;" name="district" aria-placeholder="Choose District">
+                <option value="1" >Select District</option>
+                <option value="Ariyalur">Ariyalur</option>
+                <option value="Chengalpattu">Chengalpattu</option>
+                <option value="Chennai">Chennai</option>
+                 <option value="Coimbatore"> Coimbatore</option>
+                 <option value="Cuddalore">Cuddalore</option>   
+                <option value="Dharmapuri">Dharmapuri</option>
+                <option value="Dindigul">Dindigul</option>
+                <option value="Erode">Erode</option>
+                <option value="Kallakurichi">Kallakurichi</option>
+                <option value="Kanchipuram">Kanchipuram</option>
+                <option value="Kanyakumari">Kanyakumari</option>
+                <option value="Karur">Karur</option>
+                <option value="Krishnagiri"> Krishnagiri</option>
+                <option value="Madurai"> Madurai</option>
+                <option value="Mayiladuthurai"> Mayiladuthurai</option>
+                <option value="Nagapattinam"> Nagapattinam</option>
+                <option value=" Namakkal"> Namakkal</option>
+                <option value="Nilgiris">Nilgiris</option>
+                <option value="Perambalur">Perambalur</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Puducherry UT">Puducherry UT</option>
+                <option value="Ramanathapuram">Ramanathapuram</option>
+                <option value="Ranipet">Ranipet</option>
+                <option value="Salem">Salem</option>
+                <option value="Sivagangai">Sivagangai</option>
+                <option value="Tenkasi">Tenkasi</option>
+                <option value="Thanjavur">Thanjavur</option>
+                <option value="Theni">Theni</option>
+                <option value="Thoothukudi">Thoothukudi</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Tirunelveli"> Tirunelveli</option>
+                <option value="Tiruppur">Tiruppur</option>
+                <option value="Tiruvallur">Tiruvallur</option>
+                <option value="Tiruvannamalai">Tiruvannamalai</option>
+                <option value="Tiruvarur">Tiruvarur</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Viluppuram">Viluppuram</option>
+                <option value="Virudhunagar">Virudhunagar</option>
+               
+            </select>
+            <button style="background-color:var(--first-color);margin: 10px;" class="btn  my-2 my-sm-0" type="submit">Proceed</button>
+            <a style="margin: 15px; height: 40px;
+            padding:15px"  href="/admin" class="btn btn-sm animated-button victoria-three">Back</a> 
+            
+          </form>
+    
+          
+        
+            <!-- <button style="background-color:var(--first-color);" class="btn btn-info btn-block" type="submit">Proceed</button>
+        
+        </form>
+        -->
+        
+    
+      </nav>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Whatsapp_Number</th>
+            <th scope="col">Gender</th>
+            <th scope="col">District</th>
+            <th scope="col">DateOfApply</th>
+            <th scope="col">Access_Status</th>
+            <th scope="col">Provide_link</th>
+      
+          </tr>
+        </thead>
+        <tbody>
+      
+          <tr>
+      
+            <%var i=1;%>
+            <%posts.forEach(function(posts){%><tr>
+              <td data-label="#"a><p><%=i%></p></td>
+              <td data-label="Name"><p><%=posts.username%></p></td>
+              <td data-label="Qualification"><p><%=posts.qualification%></p></td>
+          <td data-label="Whatsapp_Number"><p><%=posts.whatsapp_num%></p></td>
+          <td data-label="Gender"><p ><%=posts.gender%></td>
+          <td data-label="District"><p ><%=posts.district%></p></td>
+        <td data-label="DateOfApply"><p class="dateofapply"><%=posts.dateofapply%></p></td>
+        <td data-label="Access_Status"><p><%=posts.joinstatus%></p></td>
+            
+        <td data-label="Provide_link"> 
+          <form class="form-inline" id="<%=posts.whatsapp_num%>form"method="POST" action="/sendlink">
+            <input type="text" value='<%=posts.whatsapp_num%>' name="whatsnum" hidden>
+            <input type="text" value='<%=posts.district%>' name="district" hidden>
+            <input class="form-control mr-sm-2" type="text" value="" name="link1" id="<%=posts.whatsapp_num%>" placeholder="Link" aria-label="Search">
+            <input type="button" class="btn btn-outline-success" onclick="myFunction(<%=posts.whatsapp_num%>)" value="Submit form"><br>
+         
+          </form>
+          <group id="<%=posts.whatsapp_num%>mydiv1" class="hid" >
+            <p>Link Given?</p>
+            <div class="input-container">
+              <input type="radio" id="<%=posts.whatsapp_num%>mydiv2" class="hid" onclick="myFunction2(<%=posts.whatsapp_num%>)" value="yes" name="title"><label>Yes</label>      
+            </div>
+            <div class="input-container" onclick="myFunction4(<%=posts.whatsapp_num%>)">
+              <input type="radio" id="<%=posts.whatsapp_num%>mydiv3" class="hid"  value="no" name="title" checked><label>No</label>
+            </div>
+           
+          
+          </group>
+      </td></tr><%i++});%>
+      
+      
+        </tbody>
+      </table>
+      <script>
+     
+const navlink=document.querySelectorAll('.dateofapply')
+navlink.forEach(element => {
+    element.innerText=element.innerHTML.slice(0,25);
+});
+
+      </script>
+     <script>
+      function myFunction(a) {
+        
+        if(document.getElementById(a).value.length == 0){ 
+          console.log(document.getElementById(a).value);
+          document.getElementById(a).placeholder="Please Fill"
+          document.getElementById(a).setAttribute("class", "democlass")}
+       
+       
+          else{  var data=encodeURIComponent(document.getElementById(a).value);
+          var link="https://wa.me/91"+a+"?text="+data;
+          document.getElementById(a+"mydiv1").classList.remove("hid");
+          document.getElementById(a+"mydiv2").classList.remove("hid");
+          document.getElementById(a+"mydiv3").classList.remove("hid");
+          window.location.href=link;
+          // window.open(link);
+        console.log("hii",encodeURIComponent(data),data);
+    
+      }
+     
+
+  
+    
+    }
+    function myFunction2(a){
+      document.getElementById(a+"form").submit();
+    }
+  
+      </script>
+      <script>
+          function myFunction4(a)
+    {
+      console.log("no");
+      document.getElementById(a+"mydiv1").classList.add("hid");
+          document.getElementById(a+"mydiv2").classList.add("hid");
+          document.getElementById(a+"mydiv3").classList.add("hid");
+    }
+
+      </script>
+</body>
+</html>

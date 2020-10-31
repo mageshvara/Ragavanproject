@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" 
+    type="image/png" 
+    href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+    
+    <script type="text/javascript">
+        $(function() {
+            $('.date-picker').datepicker( {
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'MM yy',
+            onClose: function(dateText, inst) { 
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+            }
+            });
+        });
+    </script>
+    <style>
+    .ui-datepicker-calendar {
+        display: none;
+    }
+    
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>VVVSI</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <div style="display: flex;flex-direction: row;">
+            <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt="">   <p  class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
+        </div>
+                    
+        <form class="form-inline" style="padding: 10px;"  method="POST" action="/survey" >
+            
+            <div class="form-group" style="height: 50px;display: flex;flex-direction: row;">
+                
+              <select name="year" id="year" style="height: 40px;">
+                <option value="">Select Year</option>
+            </select>
+            <select name="month" id="month" style="height: 40px;">
+              <option value="">Select Month</option>
+          </select>
+                
+            <button style="background-color:var(--first-color);height: 40px;margin: 10px;" type="submit" class="btn " >Proceed</button>   </div>
+            <button style="background-color:var(--first-color); margin-left: 10px;;margin: 10px;height: 40px;"  id="btnExportToCsv" type="button" class="btn " >Download</button>
+        <a style="margin: 15px; height: 40px;
+            padding:15px"  href="/admin" class="btn btn-sm animated-button victoria-three">Back</a> 
+          </form>
+    
+          
+        
+        
+        <h1 id="filename" hidden><%=filename%></h1>
+    
+      </nav>
+      <table class="table" id="dataTable">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Whatsapp_Number</th>
+            <th scope="col">Gender</th>
+            <th scope="col">District</th>
+            <th scope="col">DateOfApply</th>
+            <th scope="col">DateOfGiven</th>
+            <th scope="col">Access_Status</th>
+           
+      
+          </tr>
+        </thead>
+        <tbody>
+      
+          <tr>
+      
+            <%var i=1;%>
+            <%posts.forEach(function(posts){%><tr>
+              <td data-label="#"a><p><%=i%></p></td>
+              <td data-label="Name"><p><%=posts.username%></p></td>
+              <td data-label="Qualification"><p><%=posts.qualification%></p></td>
+          <td data-label="Whatsapp_Number"><p><%=posts.whatsapp_num%></p></td>
+          <td data-label="Gender"><p ><%=posts.gender%></td>
+          <td data-label="District"><p ><%=posts.district%></p></td>
+        <td data-label="DateOfApply"><p class="dateofapply"><%=posts.dateofapply%></p></td>
+        <td data-label="DateOfGiven"><p class="dateofapply"><%=posts.dateofgiven%></p></td>
+        <td data-label="Access_Status"><p><%=posts.joinstatus%></p></td>
+           <%i++});%>
+        </tr>
+      
+        </tbody>
+      </table>
+      <script>
+     
+const navlink=document.querySelectorAll('.dateofapply')
+navlink.forEach(element => {
+    element.innerText=element.innerHTML.slice(0,25);
+});
+
+      </script>
+      <script>
+     
+const navlink=document.querySelectorAll('.dateofapply')
+navlink.forEach(element => {
+    element.innerText=element.innerHTML.slice(0,25);
+});
+</script>
+<script>
+  const dataTable = document.getElementById("dataTable");
+  const btnExportToCsv = document.getElementById("btnExportToCsv");
+
+  btnExportToCsv.addEventListener("click", () => {
+      const exporter = new TableCSVExporter(dataTable);
+      const csvOutput = exporter.convertToCSV();
+      const csvBlob = new Blob([csvOutput], { type: "text/csv" });
+      const blobUrl = URL.createObjectURL(csvBlob);
+      const anchorElement = document.createElement("a");
+
+      anchorElement.href = blobUrl;
+      anchorElement.download = "table-export.csv";
+      anchorElement.click();
+
+      setTimeout(() => {
+          URL.revokeObjectURL(blobUrl);
+      }, 500);
+  });
+
+  class TableCSVExporter {
+    constructor (table, includeHeaders = true) {
+        this.table = table;
+        this.rows = Array.from(table.querySelectorAll("tr"));
+
+        if (!includeHeaders && this.rows[0].querySelectorAll("th").length) {
+            this.rows.shift();
+        }
+    }
+
+    convertToCSV () {
+        const lines = [];
+        const numCols = this._findLongestRowLength();
+
+        for (const row of this.rows) {
+            let line = "";
+
+            for (let i = 0; i < numCols; i++) {
+                if (row.children[i] !== undefined) {
+                    line += TableCSVExporter.parseCell(row.children[i]);
+                }
+
+                line += (i !== (numCols - 1)) ? "," : "";
+            }
+
+            lines.push(line);
+        }
+
+        return lines.join("\n");
+    }
+
+    _findLongestRowLength () {
+        return this.rows.reduce((l, row) => row.childElementCount > l ? row.childElementCount : l, 0);
+    }
+
+    static parseCell (tableCell) {
+        let parsedValue = tableCell.textContent;
+
+        // Replace all double quotes with two double quotes
+        parsedValue = parsedValue.replace(/"/g, `""`);
+
+        // If value contains comma, new-line or double-quote, enclose in double quotes
+        parsedValue = /[",\n]/.test(parsedValue) ? `"${parsedValue}"` : parsedValue;
+
+        return parsedValue;
+    }
+}
+
+</script>
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#datepicker").bootstrapMaterialDatePicker({
+    format: "M/YYYY",
+    lang: "br",
+    time: false
+    //maxDate: moment()
+  });
+});
+
+</script>
+<script type="text/javascript">
+  for(y = 2020; y <= 2050; y++) {
+          var optn = document.createElement("OPTION");
+          optn.text = y;
+          optn.value = y;
+          
+          // if year is 2015 selected
+          if (y == 2015) {
+              optn.selected = true;
+          }
+          
+          document.getElementById('year').options.add(optn);
+  }
+  </script>
+  <script type="text/javascript">
+    var d = new Date();
+    var monthArray = new Array();
+    monthArray[0] = "January";
+    monthArray[1] = "February";
+    monthArray[2] = "March";
+    monthArray[3] = "April";
+    monthArray[4] = "May";
+    monthArray[5] = "June";
+    monthArray[6] = "July";
+    monthArray[7] = "August";
+    monthArray[8] = "September";
+    monthArray[9] = "October";
+    monthArray[10] = "November";
+    monthArray[11] = "December";
+    for(m = 0; m <= 11; m++) {
+        var optn = document.createElement("OPTION");
+        optn.text = monthArray[m];
+        // server side month start from one
+        optn.value = (m+1);
+        // if june selected
+      
+        document.getElementById('month').options.add(optn);
+    }
+    </script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+    
+</body>
+</html>

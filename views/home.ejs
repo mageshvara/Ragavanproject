@@ -17,15 +17,27 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <link rel="stylesheet" href="style1.css">
     
     <title>VVVSI</title>
+    <script>
+        console.log("<%=message%>");
+        if("<%=message%>"=="Feedback Submitted"){
+            var elmnt = document.getElementById("contact");
+elmnt.scrollIntoView(); 
+        }
+    </script>
 </head>
 <body>
+   
 
     <header class="header1">
         <nav class="nav bd-grid">
-            <div style="display: flex;flex-direction: row;">
+            <div class="haed1" style="display: flex;flex-direction: row;">
                 <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt=""><div style="display: flex;flex-direction: column;"> <p class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
               <h11 style="font-size: 11px;">(Employment Social Service NGO,India)</h11></div>
             </div>
@@ -375,7 +387,7 @@
         </div>
         </section>
         <hr  class="hr-1">
-        <section class="review section "  style="text-align: center;">
+        <!-- <section class="review section "  style="text-align: center;">
             <div style="text-align: center;" class="aboutsubtitle">
                 <h2 style="color: var(--first-color);">
                     JOB SEEKER AND RECRUITERS FEEDBACK ABOUT OUR SERVICE 
@@ -425,7 +437,37 @@
                     </div>
               </div>
             </div>
+        </section> -->
+        <section class="review section "  style="text-align: center;">
+            <div style="text-align: center;" class="aboutsubtitle">
+                <h2 style="color: var(--first-color);">
+                    JOB SEEKER AND RECRUITERS FEEDBACK ABOUT OUR SERVICE 
+                    </h2>
+            </div>   <div class="container">
+                <div class="reviews-slider">
+                    <%posts.forEach(function(posts){%>
+                  <div class="reviews-slider__item">
+                      <a class="reviews-slider__photo-wrapper" >
+                        
+
+                        <span style="display: none;" class="firstName"><%=posts.username%></span>                        
+                        
+                        <div  class="profileImage"  alt="" class="reviews-slider__photo" ></div>
+                      </a>
+                      <div class="reviews-slider__text">
+                        <div class="reviews-slider__message">
+                          <p><%=posts.usermessage%></p>
+                        </div>
+                        <div class="reviews-slider__author-name"><%=posts.username%></div>
+                        <div class="reviews-slider__author-name"><%=posts.dateofpost%></div>
+                      </div>
+                  </div><%});%>
+                 
+                </div>
+              </div>
+              <button style="margin: 20px auto;" onclick="myFunction3()" value="Submit Feedback" class="contact-button review-button">View More</button>
         </section>
+
         <hr  class="hr-1">
         <section id="contact" class="contact section">
                 <h2 class="section-title">Contact</h2>
@@ -447,13 +489,18 @@
                         <li>    INDIA – 605007</li></ul> </span>
 
                     </div>
-                    <form action="mailto:vvvsifounderveerarahavan@gmail.com" class="contact-form">
+                    <form action="/review" method="POST" class="contact-form">
+                        <%if(message=='Feedback Submitted'){%>
+                            <div id="alert" class="alert alert-success">
+                                <strong><%=message%></strong><i onclick="removes()" style="float:right;" class='bx bx-x'></i>
+                            </div>
+                            <%}%>
                         <div class="contact-inputs">
-                            <input type="text" placeholder="Name" class="contact-input">
-                            <input type="mail" placeholder="Email" class="contact-input">
+                            <input type="text" name="rname" placeholder="Name" class="contact-input">
+                            <input type="mail" name="remail" placeholder="Email" class="contact-input">
                         </div>
-                        <textarea name="" id="" cols="0" rows="10" class="contact-input"></textarea>
-                        <input type="submit" value="Send" class="contact-button">
+                        <textarea name="rmsg" id="" placeholder="share your experience" cols="0" rows="10" class="contact-input"></textarea>
+                        <input type="submit" value="Submit Feedback" class="contact-button">
                     </form>
                 </div>
         </section>
@@ -487,6 +534,62 @@
             </div>
         </div>
     </footer>
+    <script>
+        function myFunction3() {
+          location.replace("/review")
+        }
+        </script>
+    <script>
+        $(document).ready(function(){
+  var firstName = $('.firstName').text();
+
+  var intials = $('.firstName').text().charAt(0);
+  var profileImage = $('.profileImage').text(intials);
+  var colors =  ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
+		  '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+		  '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', 
+		  '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
+		  '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', 
+		  '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399',
+		  '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', 
+		  '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+		  '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', 
+		  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+  $('.profileImage').each(function(){
+    var new_color = colors[Math.floor(Math.random()*colors.length)];
+    $(this).css('background-color',new_color);
+  });
+});
+    </script>
+    <script>
+        console.log("<%=message%>");
+        if("<%=message%>"=="Feedback Submitted"){
+            var elmnt = document.getElementById("contact");
+elmnt.scrollIntoView(); 
+        }
+    </script>
+    <script>
+      var $reviewsSlider = $('.reviews-slider');
+if ($reviewsSlider.length) {
+  $reviewsSlider.slick({
+    accessibility: false,
+    centerMode: true,
+    slidesToShow: 5,
+    responsive: [{
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3
+      }
+    }, {
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        centerMode: false,
+      }
+    }]
+  });
+}
+    </script>
     <script>
         $('.owl-carousel').owlCarousel({
       loop:true,
@@ -547,6 +650,9 @@
     <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="script1.js"></script>
 </body>
 </html>

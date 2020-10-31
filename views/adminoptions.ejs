@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <link rel="icon" 
+      type="image/png" 
+      href="images/favicon.ico">    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="style.css">
+    <title>VVVSI</title>
+    <style>
+       #logout{
+    background-color: transparent;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    border: 2px solid #40bad5 ;
+    border-radius: 20px;
+    width:100px;
+    padding: 2px;
+    margin-top: -11px;
+    
+}
+#logout:hover{
+    background-color:#00416d;
+    color: white;
+    transform: scale(105%);
+    transition-duration: 0.5s;
+}
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+    </style>
+</head>
+<body>
+    <header class="header1" style="background: rgba(0, 0, 0, 0.5);">
+        <nav class="nav bd-grid">
+            <div style="display: flex;flex-direction: row;">
+                <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt="">   <p  class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
+            </div>
+                <div class="nav_menu" id="nav-menu">
+                    <ul class="nav_list">
+                        <li class="nav_item"><a style="text-decoration: none;" href="#home" class="nav_link active">Home</a></li>
+                        <li class="nav_item"><a style="text-decoration: none;" href="#GiveLink" class="nav_link">GiveLink</a></li>
+                        <li class="nav_item"><a style="text-decoration: none;" href="#CheckPendings" class="nav_link">Pendings</a></li>
+                        <li class="nav_item"><a style="text-decoration: none;" href="#Checkcompleted" class="nav_link">completed</a></li>  
+                        <li class="nav_item"><a style="text-decoration: none;" href="#survey" class="nav_link">Survey</a></li> 
+                        <li class="nav_item"><form action="/logout?_method=DELETE" method="POST">
+                            <button id="logout" type="submit">Log Out</button>
+                          </form></li>       
+                    </ul>
+                </div>
+
+                <div id="navtoggle" class="nav_toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+           
+        </nav>
+    </header>
+    <div class="main">
+        <section >
+            <section  id="home">
+            
+             <!-- <img src="images/im1.PNG" style="
+                display: block;
+                width: 100vw;
+                height: auto;
+              
+              " alt=""> -->
+              <video autoplay muted loop id="myVideo">
+                <source src="images/backv.mp4" type="video/mp4">
+               
+              </video>
+              </section>
+        </section>
+        <hr  class="hr-1">
+        <section class="givelink" id="GiveLink">
+
+                <h2  style="margin-top: 100px;" class="section-title">Give Link</h2>
+    <div class="givelinkcontainer bd-grid">
+        <div class="givelinkimg">
+            <img src="images/gj2.gif" alt="">
+            
+        </div>
+        <div>
+                       
+            <h2 class="givelinksubtitle"> Vallalar Velai Vaaipu Sevai Iyakkam!</h2>
+          
+           <form style="color: var(--first-color);" class="getjform text-center border border-light p-5" method="POST" action="/giveaccess">
+
+            <p class="h4 mb-4">Provide Link to the users as per district</p>
+            <select name="district" aria-placeholder="Choose District" class="browser-default custom-select mb-4">
+                <option value="1" >Select District</option>
+                <option value="Ariyalur">Ariyalur</option>
+                <option value="Chengalpattu">Chengalpattu</option>
+                <option value="Chennai">Chennai</option>
+                 <option value="Coimbatore"> Coimbatore</option>
+                 <option value="Cuddalore">Cuddalore</option>   
+                <option value="Dharmapuri">Dharmapuri</option>
+                <option value="Dindigul">Dindigul</option>
+                <option value="Erode">Erode</option>
+                <option value="Kallakurichi">Kallakurichi</option>
+                <option value="Kanchipuram">Kanchipuram</option>
+                <option value="Kanyakumari">Kanyakumari</option>
+                <option value="Karur">Karur</option>
+                <option value="Krishnagiri"> Krishnagiri</option>
+                <option value="Madurai"> Madurai</option>
+                <option value="Mayiladuthurai"> Mayiladuthurai</option>
+                <option value="Nagapattinam"> Nagapattinam</option>
+                <option value=" Namakkal"> Namakkal</option>
+                <option value="Nilgiris">Nilgiris</option>
+                <option value="Perambalur">Perambalur</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Puducherry UT">Puducherry UT</option>
+                <option value="Ramanathapuram">Ramanathapuram</option>
+                <option value="Ranipet">Ranipet</option>
+                <option value="Salem">Salem</option>
+                <option value="Sivagangai">Sivagangai</option>
+                <option value="Tenkasi">Tenkasi</option>
+                <option value="Thanjavur">Thanjavur</option>
+                <option value="Theni">Theni</option>
+                <option value="Thoothukudi">Thoothukudi</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Tirunelveli"> Tirunelveli</option>
+                <option value="Tiruppur">Tiruppur</option>
+                <option value="Tiruvallur">Tiruvallur</option>
+                <option value="Tiruvannamalai">Tiruvannamalai</option>
+                <option value="Tiruvarur">Tiruvarur</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Viluppuram">Viluppuram</option>
+                <option value="Virudhunagar">Virudhunagar</option>
+               
+            </select>
+        
+            <button style="background-color:var(--first-color);" class="btn btn-info btn-block" type="submit">Proceed</button>
+        
+        </form>
+       
+        
+    
+        </div>
+    </div>
+          
+
+</section>
+<hr  class="hr-1">
+<section  class="pendingwork" id="CheckPendings">
+
+    <h2 class="section-title">Pending Work</h2>
+    <div class="pendingworkcontainer bd-grid">
+        <div class="pendingworkimg">
+            <img src="images/pending.gif" alt="">
+        </div>
+        <div>
+                       
+            <h2 class="pendingworksubtitle">We suffer 'cause we think that we have enough time and keep much work in pending
+
+                ⏰</h2>
+            <div class="getjobbutton ">
+           
+                <a href="/pending" class="btn btn-sm animated-button victoria-three">Check</a> 
+    
+            </div>
+        
+    
+        </div>
+       
+    
+    </div>
+</section>
+<hr style="margin-top: 200px;" class="hr-1" >
+<section  class="completedwork" id="Checkcompleted" >
+
+    <h2  class="section-title">completed Work</h2>
+    <div class="completedcontainer bd-grid">
+       
+        <div class="completedimg">
+            <img src="images/completed.gif" alt="">
+        </div>
+        <div>
+                       
+            <h3 class="completedsubtitle">I used to hang out in my dad's workshop on weekends. Later, when I was starting out as an actor, I became a roofer and a framer to make money. But what I really enjoyed was the finished work. I like the longevity.</h3>
+            <p>Mark Harmon</p>
+            <div class="getjobbutton ">
+           
+                <a href="/completed" class="btn btn-sm animated-button victoria-three">Let's See</a> 
+    
+            </div>
+        
+    
+        </div>
+    
+    </div>
+</section>
+<hr  class="hr-1"style="margin-top: 100px;">
+<section class="survey" id="survey">
+
+    <h2 class="section-title">Survey</h2>
+    <div class="surveycontainer bd-grid">
+        <div class="surveyimg">
+            <img src="images/survey2.gif" alt="">
+        </div>
+        <div>
+
+                       
+            <h3 class="surveysubtitle">I used to hang out in my dad's workshop on weekends. Later, when I was starting out as an actor, I became a roofer and a framer to make money. But what I really enjoyed was the finished work. I like the longevity.</h3>
+            <p>Mark Harmon</p>
+            <div class="getjobbutton ">
+           
+                <a href="/survey" class="btn btn-sm animated-button victoria-three">Let's Check</a> 
+    
+            </div>
+        
+    
+        </div>
+       
+     
+  
+    
+    </div>
+</section>
+    </div>
+    <footer class="footer section">
+        <div class="footer-container bd-grid">
+            <div class="footer-data">
+                <h2 class="footer-title">VVVSM</h2>
+                <p class="footer-text">Vallalar Velaivaipu Sevai Maiyam</p>
+            </div>
+            <div class="footer-data">
+                <h2 class="footer-title">Explore</h2>
+             <ul>
+                 <li><a href="#home" class="footer-link">Home</a></li>
+                 <li><a href="#GiveLink" class="footer-link">GiveAccess</a></li>
+                 <li><a href="#CheckPendings" class="footer-link">Pending</a></li>
+                 <li><a href="#Checkcompleted" class="footer-link">Completd</a></li>
+                 <li><a href="#survey" class="footer-link">Survey</a></li>
+                 <li><a href="/reviewaccess" class="footer-link">ReviewAccess</a></li>
+                 <li><a href="/reviewlist" class="footer-link">ReviewList</a></li>
+  
+             </ul>
+            </div>
+            <div class="footer-data">
+                <h2 class="footer-title">Follow</h2>
+                <a href="https://www.instagram.com/vvvsi_career_guidelines/"class="footer-social"><i class='bx bxl-instagram-alt' ></i></a>
+                <a href=" https://www.facebook.com/profile.php?id=100031790381261" class="footer-social"><i class='bx bxl-facebook-square' ></i></a>
+                <a href="https://www.youtube.com/c/VVVSICAREERGUIDELINES" class="footer-social"><i class='bx bxl-youtube' ></i></a>
+                <a href="https://www.youtube.com/c/VVVSICAREERGUIDELINES" class="footer-social"><i class='bx bxl-twitter' ></i></a>
+
+
+         
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+        
+        
+        $(window).scroll(function() {    
+            var scroll = $(window).scrollTop();
+         
+           if($(window).width()<=600){
+             
+            $(".header1").css({
+                    'background-color': 'var(--first-color)'
+                  
+                });
+
+           }
+           else if (scroll >= 500) {
+                
+                $(".header1").css({
+                    'background-color': 'var(--first-color)'
+                  
+                });
+        
+            } else {
+          
+                $(".header1").css({
+                   'background-color': 'transparent'
+                });
+        
+            }
+        }); 
+           
+        });</script>
+          <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+</body>
+</html>

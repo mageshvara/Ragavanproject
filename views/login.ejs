@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #303960;
+
+}
+
+.formd{
+    background-color: black;;
+    position: absolute;
+    top:35%;
+    left:50%;
+    text-align: center;
+    transform: translateX(-50%);
+    width: 400px;;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+form{
+    margin: 50px;
+transform: translateZ(60%);
+}
+input[type=email] ,input[type=password] {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #40bad5 ;
+    background-color: transparent;
+    color: white;
+    border-radius: 20px;
+    margin: 10px;;
+    width: 200px;
+}
+input[type=submit]{
+    background-color: transparent;
+    color: white;
+    font-family: sans-serif;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #40bad5 ;
+    border-radius: 20px;
+    width:100px;
+    margin-top: 15px;;
+    
+}
+input[type=submit]:hover{
+    background-color:#40bad5;
+    transform: scale(120%);
+    transition-duration: 0.5s;
+}
+
+input[type=text]:focus ,input[type=password]:focus {
+   
+    
+    width: 260px;
+    border: 2px solid #a8df65;
+    transition-duration: 0.5s;
+}
+
+
+h1{
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
+    <div class="formd">
+        <form action="/login" method="post">
+            <h1>Login</h1>
+            <input type="email" id="email" name="email" placeholder="Email"><br>
+            <input type="password" name="password" id="password" placeholder="Password">
+           <br> <input type="submit" value="Login">
+        </form>
+        <a href="/" style="float: right;margin: 20px;text-decoration: none;">Go to Home Page</a>
+    </div>
+</body>
+</html>

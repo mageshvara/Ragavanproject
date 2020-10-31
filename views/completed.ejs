@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" 
+    type="image/png" 
+    href="images/favicon.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>VVVSI</title>
+    <style>
+       
+  
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <div style="display: flex;flex-direction: row;">
+            <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt="">   <p  class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
+        </div>
+                    
+        <form class="form-inline" style="padding: 10px;"  method="POST" action="/completed">
+            
+            <select  style="padding: 10px;" name="district" aria-placeholder="Choose District">
+                <option value="1" >Select District</option>
+                <option value="Ariyalur">Ariyalur</option>
+                <option value="Chengalpattu">Chengalpattu</option>
+                <option value="Chennai">Chennai</option>
+                 <option value="Coimbatore"> Coimbatore</option>
+                 <option value="Cuddalore">Cuddalore</option>   
+                <option value="Dharmapuri">Dharmapuri</option>
+                <option value="Dindigul">Dindigul</option>
+                <option value="Erode">Erode</option>
+                <option value="Kallakurichi">Kallakurichi</option>
+                <option value="Kanchipuram">Kanchipuram</option>
+                <option value="Kanyakumari">Kanyakumari</option>
+                <option value="Karur">Karur</option>
+                <option value="Krishnagiri"> Krishnagiri</option>
+                <option value="Madurai"> Madurai</option>
+                <option value="Mayiladuthurai"> Mayiladuthurai</option>
+                <option value="Nagapattinam"> Nagapattinam</option>
+                <option value=" Namakkal"> Namakkal</option>
+                <option value="Nilgiris">Nilgiris</option>
+                <option value="Perambalur">Perambalur</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Puducherry UT">Puducherry UT</option>
+                <option value="Ramanathapuram">Ramanathapuram</option>
+                <option value="Ranipet">Ranipet</option>
+                <option value="Salem">Salem</option>
+                <option value="Sivagangai">Sivagangai</option>
+                <option value="Tenkasi">Tenkasi</option>
+                <option value="Thanjavur">Thanjavur</option>
+                <option value="Theni">Theni</option>
+                <option value="Thoothukudi">Thoothukudi</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Tirunelveli"> Tirunelveli</option>
+                <option value="Tiruppur">Tiruppur</option>
+                <option value="Tiruvallur">Tiruvallur</option>
+                <option value="Tiruvannamalai">Tiruvannamalai</option>
+                <option value="Tiruvarur">Tiruvarur</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Viluppuram">Viluppuram</option>
+                <option value="Virudhunagar">Virudhunagar</option>
+               
+            </select>
+            <button style="background-color:var(--first-color);" class="btn  my-2 my-sm-0" type="submit">Proceed</button>
+            <a style="margin: 5px; height: 50px;
+            padding:15px"  href="/admin" class="btn btn-sm animated-button victoria-three">Back</a> 
+          </form>
+    
+          
+        
+           
+        
+        
+        
+    
+      </nav>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Whatsapp_Number</th>
+            <th scope="col">Gender</th>
+            <th scope="col">District</th>
+            <th scope="col">DateOfApply</th>
+            <th scope="col">DateOfGiven</th>
+            <th scope="col">Access_Status</th>
+           
+      
+          </tr>
+        </thead>
+        <tbody>
+      
+          <tr>
+            <%var i=1;%>
+            <%posts.forEach(function(posts){%><tr>
+              <td data-label="#"a><p><%=i%></p></td>
+              <td data-label="Name"><p><%=posts.username%></p></td>
+              <td data-label="Qualification"><p><%=posts.qualification%></p></td>
+          <td data-label="Whatsapp_Number"><p><%=posts.whatsapp_num%></p></td>
+          <td data-label="Gender"><p ><%=posts.gender%></td>
+          <td data-label="District"><p ><%=posts.district%></p></td>
+        <td data-label="DateOfApply"><p class="dateofapply"><%=posts.dateofapply%></p></td>
+        <td data-label="DateOfGiven"><p class="dateofapply"><%=posts.dateofgiven%></p></td>
+        <td data-label="Access_Status"><p><%=posts.joinstatus%></p></td>
+           <%i++});%></tr>
+      
+      
+        </tbody>
+      </table>
+      <script>
+     
+const navlink=document.querySelectorAll('.dateofapply')
+navlink.forEach(element => {
+    element.innerText=element.innerHTML.slice(0,25);
+});
+
+      </script>
+      <script type="text/javascript">
+        document.getElementById("backbtn").onclick = function () {
+            console.log("hii");
+           window.location.href = "https://localhost:4000/home";
+
+         
+        };
+    </script>
+</body>
+</html>
