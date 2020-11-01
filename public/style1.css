@@ -119,10 +119,17 @@ img{
     justify-content: space-between;
     align-items: center;
 }
+.topimg{
+    width: 100vw;
+    height: 220px;
+}
 
 @media screen and (max-width:768px)
 {
-    .
+    #home
+    {
+        margin-top: -20px;
+    }
     .nav_menu{
         position: fixed;
         top: var(--header-height);
@@ -135,6 +142,11 @@ img{
        backdrop-filter:blur(10px)
 
     }
+.topimg{
+    width: 100vw;
+    height: auto;
+}
+
     .header1{
         background-color: var(--first-color);
     }
