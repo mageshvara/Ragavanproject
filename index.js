@@ -683,12 +683,14 @@ app.post("/review2",function(req,res)
        })
      
      });
-     
-    app.get('/update',(req,res)=>{
+     function isEmptyObject(obj) {
+      return !Object.keys(obj).length;
+    }
+    app.get('/update',checkAuthenticated,(req,res)=>{
     
     res.render("update");
     });
-    app.post('/update',(req,res)=>{
+    app.post('/update',checkAuthenticated,(req,res)=>{
       
       headerurl=req.body.url;
       var sql2="SELECT * FROM imageurl WHERE iid = ?"
@@ -700,25 +702,27 @@ app.post("/review2",function(req,res)
         }
         else{
   
-      if(result){
-        var sql="INSERT INTO imageurl (iid,url) VALUES ?";  
-        var values = [imgid,headerurl]; 
-        con.query(sql, [values], function (err, result)
-         {  if(err) throw err;
-  
-        else{
-          res.render("update");}
-        });
-  
-    }
-    else{
-  
+      if( isEmptyObject(result)){
+        
       var sql="INSERT INTO imageurl (iid,url) VALUES ?";  
-      var values = [imgid,headerurl]; 
+      var values = [[imgid,headerurl]]; 
       con.query(sql, [values], function (err, result) {
         if(err) throw err;
         else{
           res.render("update");}
+      });
+       
+  
+    }
+    else{
+     // console.log(result.length());
+      var sql="UPDATE imageurl SET iid=1,url=? WHERE 1"
+      var values = headerurl; 
+      con.query(sql, values, function (err, result)
+       {  if(err) throw err;
+
+      else{
+        res.render("update");}
       });
      
     }

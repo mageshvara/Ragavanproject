@@ -3,16 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <link rel="icon" 
+      type="image/png" 
+      href="images/favicon.ico">    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="style.css">
+    <style>
+      .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+
+}
+
+       #logout{
+    background-color: transparent;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    border: 2px solid #40bad5 ;
+    border-radius: 20px;
+    width:100px;
+    padding: 2px;
+    margin-top: -11px;
+    
+}
+#logout:hover{
+    background-color:#00416d;
+    color: white;
+    transform: scale(105%);
+    transition-duration: 0.5s;
+}
+    </style>
 </head>
 <body>
+  <header class="header1" style="background-color: #00416d;color: white;">
+    <nav class="nav bd-grid">
+        <div style="display: flex;flex-direction: row;">
+            <img style="height:30px;width:30px" src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Brownring-Lotus.png" alt="">   <p  class="nav_logo">Vallalar Velai Vaaipu Sevai Iyakkam </p>
+        </div>
+            <div class="nav_menu" id="nav-menu">
+                <ul class="nav_list">
+                    <li class="nav_item"><a style="text-decoration: none;" href="/adminoptions" class="nav_link active">Home</a></li>
+                    <li class="nav_item"><a style="text-decoration: none;" href="/adminoptions" class="nav_link">GiveLink</a></li>
+                    <li class="nav_item"><a style="text-decoration: none;" href="/adminoptions" class="nav_link">Pendings</a></li>
+                    <li class="nav_item"><a style="text-decoration: none;" href="/adminoptions" class="nav_link">completed</a></li>  
+                    <li class="nav_item"><a style="text-decoration: none;" href="/adminoptions" class="nav_link">Survey</a></li> 
+                    <li class="nav_item"><form action="/logout?_method=DELETE" method="POST">
+                        <button id="logout" type="submit">Log Out</button>
+                      </form></li>       
+                </ul>
+            </div>
+
+            <div id="navtoggle" class="nav_toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+       
+    </nav>
+</header>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<form runat="server" action="/update" method="POST">
-  <input type='file' id="imgInp" />
-  <img  id="blah" src="#" alt="your image" />
-  <input type="text" id="url" name="url" >
-  <button type="submit" >Update</button>
-</form>
+    <section class="form-sec" style="margin: auto;width: 80%;text-align: center;/*! justify-content: center; *//*! justify-items: center; *//*! align-items: center; */">
+       
+      <form runat="server" action="/update" method="POST" style="text-align: center;margin: auto;margin-top: 10%;border: #00416d solid;padding: 15px;border-radius: 15px;">
+        <!-- <input type='file' id="imgInp" /> -->
+        <h2 style="color: #00416d;">Select the Image and Uplaod</h2>
+        
+        <img id="blah" src="images/uploadi.png" alt="your image"  style="width:auto; text-align: center;margin: auto;"><br>
+
+  <div class="upload-btn-wrapper">
+          <button class="btn">Upload a file</button>
+          <input type="file" id="imgInp" name="myfile">
+        </div><br>
+        <input type="text" id="url" name="url" style="display: none;">
+        <button type="submit" style="padding: 10px;width: 200px;border-radius: 15px;background: #00416d;color: white;">Update</button>
+      </form>
+    </section>
+  
+
+
 <script>
     function getDataUrl(img) {
    // Create canvas
@@ -49,5 +139,10 @@ img.addEventListener('load', function (event) {
 });
 });
 </script>
+<link rel="stylesheet" href="style.css">
+
+<script src="script.js"></script>
+
+<script src="https://unpkg.com/scrollreveal"></script>
 </body>
 </html>
